@@ -33,6 +33,9 @@ public class DivExpression extends de.vill.model.expression.DivExpression implem
                 for (Literal denominatorLiteral : combination) {
                     denominatorFactorSum += denominatorLiteral.factor;
                 }
+                if (denominatorFactorSum == 0){
+                    return result;
+                }
                 newSummand.factor /= denominatorFactorSum;
                 var subIndex = substitutionVariableIndex.getIndex();
                 newSummand.name = "x_" + subIndex;

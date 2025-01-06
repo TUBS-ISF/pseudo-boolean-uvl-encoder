@@ -31,6 +31,6 @@ public class Literal implements Cloneable{
         if (factor < 0) {
             signString = "";
         }
-        return " " + signString + factor + " * " + (sign ? name : "neg(" + name + ")");
+        return " " + signString + String.format("%.0f", factor) + " * " + (sign ? name : "neg(" + name + ")");
     }
 }
