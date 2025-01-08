@@ -40,7 +40,7 @@ public class ConvertFeatureCardinalityForOPB {
 
         feature.setCardinality(null);
 
-        for (int i = min; i <= max; i++) {
+        for (int i = 1; i <= max; i++) {
             Feature subTreeClone = feature.clone();
             addPrefixToNamesRecursively(subTreeClone, "_" + i, featureModel);
             newChildren.getFeatures().add(subTreeClone);
@@ -63,11 +63,11 @@ public class ConvertFeatureCardinalityForOPB {
             }
 
         }
-        for (int i = min; i < max; i++) {
-            Constraint lastTakenInGroupCardinality = new LiteralConstraint(newChildren.getFeatures().get(i - min));
+        for (int i = 1; i < max; i++) {
+            Constraint lastTakenInGroupCardinality = new LiteralConstraint(newChildren.getFeatures().get(i-1));
             List<LiteralConstraint> notToTakeInGroupCarrdinality = new LinkedList<>();
             for (int k=i+1;k<=max;k++){
-                notToTakeInGroupCarrdinality.add(new LiteralConstraint(newChildren.getFeatures().get(k - min)));
+                notToTakeInGroupCarrdinality.add(new LiteralConstraint(newChildren.getFeatures().get(k-1)));
             }
             Constraint groupCardinalityOrderConstraint = new ImplicationConstraint(new NotConstraint(lastTakenInGroupCardinality), new NotConstraint(createDisjunction(notToTakeInGroupCarrdinality)));
             featureModel.getOwnConstraints().add(groupCardinalityOrderConstraint);
