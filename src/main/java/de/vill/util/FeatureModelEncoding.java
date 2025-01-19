@@ -53,14 +53,15 @@ public class FeatureModelEncoding {
 
         SubstitutionVariableIndex substitutionVariableIndex = SubstitutionVariableIndex.getInstance();
         result.numberVariables += substitutionVariableIndex.peekIndex();
-        String header = "#variable= " + result.numberVariables + " #constraint= " + result.numberConstraints + "\n";
-        result.opbString.insert(0,header);
 
         List<Constraint> constraints = featureModel.getConstraints();
         constraints.addAll(featureModel.getFeatureConstraints());
 
         for (Constraint constraint : constraints){
+            var current_sub_index_before = substitutionVariableIndex.peekIndex();
             var cnfConstraint = ((IPbcEncodable)substituteExpressions(constraint, result)).getNode().toCNF();
+            var current_sub_index_after = substitutionVariableIndex.peekIndex();
+            result.numberVariables += current_sub_index_after - current_sub_index_before;
             List<Node> clauses = new LinkedList<>();
             if (cnfConstraint instanceof And) {
                 for(Node andChild : cnfConstraint.getChildren()){
@@ -98,7 +99,11 @@ public class FeatureModelEncoding {
             }
         }
 
+        String header = "#variable= " + result.numberVariables + " #constraint= " + result.numberConstraints + "\n";
+        result.opbString.insert(0,header);
+
         writer.append(result.opbString);
+
 
     }
 }

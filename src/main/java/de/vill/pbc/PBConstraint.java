@@ -3,6 +3,7 @@ package de.vill.pbc;
 import java.text.DecimalFormat;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PBConstraint implements Cloneable{
     public List<Literal> literalList;
@@ -94,6 +95,12 @@ public class PBConstraint implements Cloneable{
     }
 
     public void toOPBString(OPBResult result) {
+        for (Literal l : literalList) {
+            if (l.name == null){
+                k -= l.factor;
+            }
+        }
+        literalList = literalList.stream().filter(l -> l.name != null).collect(Collectors.toList());
         DecimalFormat df = new DecimalFormat("#.####");
         for (Literal l : literalList) {
             if (!l.sign){
@@ -114,8 +121,10 @@ public class PBConstraint implements Cloneable{
                 result.opbString.append(" +");
                 result.opbString.append((long) (l.factor * Math.pow(10,maxDecimalPlaces)));
             }
+
             result.opbString.append(" ");
             result.opbString.append("\"" + l.name + "\"");
+
         }
         result.opbString.append(" ");
         result.opbString.append(type);

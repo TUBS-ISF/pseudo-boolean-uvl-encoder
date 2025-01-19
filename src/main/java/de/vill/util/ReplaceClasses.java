@@ -1,5 +1,6 @@
 package de.vill.util;
 
+import de.vill.constraints.EqualsEquationConstraint;
 import de.vill.model.constraint.*;
 import de.vill.model.expression.*;
 
@@ -29,6 +30,8 @@ public class ReplaceClasses {
             return new de.vill.constraints.OrConstraint(replace(((OrConstraint) constraint).getLeft()), replace(((OrConstraint) constraint).getRight()));
         }else if(constraint instanceof ParenthesisConstraint){
             return new de.vill.constraints.ParenthesisConstraint(replace(((ParenthesisConstraint) constraint).getContent()));
+        }else if(constraint instanceof EqualEquationConstraint){
+            return new EqualsEquationConstraint(replace(((EqualEquationConstraint) constraint).getLeft()), replace(((EqualEquationConstraint) constraint).getRight()));
         }else {
             return constraint;
         }

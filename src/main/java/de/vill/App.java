@@ -3,6 +3,7 @@ package de.vill;
 import de.vill.main.UVLModelFactory;
 import de.vill.model.FeatureModel;
 import de.vill.model.constraint.Constraint;
+import de.vill.util.ConvertFeatureCardinalityForOPB;
 import de.vill.util.FeatureModelEncoding;
 
 import java.io.BufferedWriter;
@@ -22,11 +23,14 @@ import java.util.List;
 public class App 
 {
     public static void main( String[] args ) throws IOException {
-        final File UVL_FILE = new File("/home/stefan/stefan-vill-master/eval/tmp_models/test.uvl");
-        final File TARGET_FILE = new File("/home/stefan/stefan-vill-master/eval/tmp_files/test.dimacs");
+        final File UVL_FILE = new File("/home/stefan/stefan-vill-master/eval/tmp_models/root_8.uvl");
+        final File TARGET_FILE = new File("/home/stefan/test/test.opb");
         String content = new String(Files.readAllBytes(UVL_FILE.toPath()));
         UVLModelFactory uvlModelFactory = new UVLModelFactory();
         FeatureModel featureModel = uvlModelFactory.parse(content);
+
+        ConvertFeatureCardinalityForOPB convertFeatureCardinalityForOPB = new ConvertFeatureCardinalityForOPB();
+        convertFeatureCardinalityForOPB.convertFeatureModel(featureModel);
 
         List<Constraint> constraintList = new LinkedList<>();
         for (Constraint constraint : featureModel.getOwnConstraints()){
