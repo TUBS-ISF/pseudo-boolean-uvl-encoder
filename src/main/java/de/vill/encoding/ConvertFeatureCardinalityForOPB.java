@@ -1,4 +1,4 @@
-package de.vill.util;
+package de.vill.encoding;
 
 import de.vill.model.*;
 import de.vill.model.constraint.*;

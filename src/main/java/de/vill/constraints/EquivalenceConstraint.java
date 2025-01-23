@@ -4,7 +4,7 @@ import de.vill.model.building.VariableReference;
 import de.vill.model.constraint.Constraint;
 import de.vill.model.constraint.LiteralConstraint;
 import de.vill.pbc.PBCLiteralConstraint;
-import de.vill.util.SubstitutionVariableIndex;
+import de.vill.encoding.SubstitutionVariableIndex;
 import org.prop4j.And;
 import org.prop4j.Implies;
 import org.prop4j.Node;

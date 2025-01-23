@@ -3,7 +3,7 @@ package de.vill.constraints.expression;
 import de.vill.model.expression.Expression;
 import de.vill.pbc.Literal;
 import de.vill.pbc.PBConstraint;
-import de.vill.util.SubstitutionVariableIndex;
+import de.vill.encoding.SubstitutionVariableIndex;
 
 import java.util.LinkedList;
 import java.util.List;

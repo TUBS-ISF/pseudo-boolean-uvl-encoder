@@ -4,13 +4,13 @@ import de.vill.model.building.VariableReference;
 import de.vill.model.constraint.Constraint;
 import de.vill.model.constraint.LiteralConstraint;
 import de.vill.pbc.PBCLiteralConstraint;
-import de.vill.util.SubstitutionVariableIndex;
+import de.vill.encoding.SubstitutionVariableIndex;
 import org.prop4j.Node;
 import org.prop4j.Or;
 
 import java.util.Map;
 
-import static de.vill.util.Utility.getMaxOrConstraint;
+import static de.vill.encoding.Utility.getMaxOrConstraint;
 
 public class OrConstraint extends de.vill.model.constraint.OrConstraint implements IPbcEncodable {
     public OrConstraint(Constraint left, Constraint right) {

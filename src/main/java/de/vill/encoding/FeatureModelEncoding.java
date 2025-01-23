@@ -1,4 +1,4 @@
-package de.vill.util;
+package de.vill.encoding;
 
 import de.vill.constraints.IPbcEncodable;
 import de.vill.model.FeatureModel;
@@ -15,8 +15,8 @@ import java.io.Writer;
 import java.util.LinkedList;
 import java.util.List;
 
-import static de.vill.util.Utility.encodeConstraintTseitinStyle;
-import static de.vill.util.Utility.substituteExpressions;
+import static de.vill.encoding.Utility.encodeConstraintTseitinStyle;
+import static de.vill.encoding.Utility.substituteExpressions;
 
 public class FeatureModelEncoding {
     public static StringBuilder toOPBString(FeatureModel featureModel){

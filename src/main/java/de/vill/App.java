@@ -1,18 +1,17 @@
 package de.vill;
 
+import de.vill.encoding.ReplaceClasses;
 import de.vill.main.UVLModelFactory;
 import de.vill.model.FeatureModel;
 import de.vill.model.constraint.Constraint;
-import de.vill.util.ConvertFeatureCardinalityForOPB;
-import de.vill.util.FeatureModelEncoding;
+import de.vill.encoding.ConvertFeatureCardinalityForOPB;
+import de.vill.encoding.FeatureModelEncoding;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class App
 
         List<Constraint> constraintList = new LinkedList<>();
         for (Constraint constraint : featureModel.getOwnConstraints()){
-            constraintList.add(de.vill.util.ReplaceClasses.replace(constraint));
+            constraintList.add(ReplaceClasses.replace(constraint));
         }
         featureModel.getOwnConstraints().clear();
         featureModel.getOwnConstraints().addAll(constraintList);

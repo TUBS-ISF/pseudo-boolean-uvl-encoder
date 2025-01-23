@@ -4,13 +4,13 @@ import de.vill.model.building.VariableReference;
 import de.vill.model.constraint.Constraint;
 import de.vill.model.constraint.LiteralConstraint;
 import de.vill.pbc.PBCLiteralConstraint;
-import de.vill.util.SubstitutionVariableIndex;
+import de.vill.encoding.SubstitutionVariableIndex;
 import org.prop4j.And;
 import org.prop4j.Node;
 
 import java.util.Map;
 
-import static de.vill.util.Utility.getMaxAndConstraint;
+import static de.vill.encoding.Utility.getMaxAndConstraint;
 
 public class AndConstraint extends de.vill.model.constraint.AndConstraint implements IPbcEncodable {
     public AndConstraint(Constraint left, Constraint right) {

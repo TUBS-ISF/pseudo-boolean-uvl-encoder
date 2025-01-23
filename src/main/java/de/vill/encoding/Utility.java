@@ -1,4 +1,4 @@
-package de.vill.util;
+package de.vill.encoding;
 
 import de.vill.constraints.expression.IExpressionOpbEncodeable;
 import de.vill.model.building.VariableReference;

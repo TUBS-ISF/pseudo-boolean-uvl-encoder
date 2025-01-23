@@ -4,14 +4,14 @@ import com.google.common.collect.Sets;
 import de.vill.model.expression.Expression;
 import de.vill.pbc.Literal;
 import de.vill.pbc.PBConstraint;
-import de.vill.util.SubstitutionVariableIndex;
+import de.vill.encoding.SubstitutionVariableIndex;
 
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import static de.vill.util.Utility.substitutionConstraint;
+import static de.vill.encoding.Utility.substitutionConstraint;
 
 public class DivExpression extends de.vill.model.expression.DivExpression implements IExpressionOpbEncodeable {
     public DivExpression(Expression left, Expression right) {

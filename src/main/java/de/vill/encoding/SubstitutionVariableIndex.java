@@ -1,4 +1,4 @@
-package de.vill.util;
+package de.vill.encoding;
 
 public class SubstitutionVariableIndex {
     private int index;
