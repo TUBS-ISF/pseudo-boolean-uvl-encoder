@@ -307,6 +307,9 @@ public class Utility {
         pbConstraint.k = rightSum.stream().map(x -> x.factor).reduce(0.0, Double::sum);
         pbConstraint.literalList = new LinkedList<>();
         for (Map.Entry<String,Double> e : literalMap.entrySet()) {
+            if (e.getValue() == 0.0){
+                continue;
+            }
             pbConstraint.literalList.add(new Literal(e.getValue(), e.getKey(), true));
         }
 
