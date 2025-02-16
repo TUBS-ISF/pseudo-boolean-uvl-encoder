@@ -112,7 +112,7 @@ public class PBConstraint implements Cloneable{
         }
         k = Double.parseDouble(df.format(k));
         result.numberConstraints++;
-        int maxDecimalPlaces = getMaxDecimalPlaces();
+        int maxDecimalPlaces = Math.min(getMaxDecimalPlaces(), 4);
         for(Literal l : literalList){
             if(l.factor < 0){
                 result.opbString.append(" ");
