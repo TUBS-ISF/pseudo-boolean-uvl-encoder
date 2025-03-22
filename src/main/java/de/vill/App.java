@@ -22,8 +22,8 @@ import java.util.List;
 public class App 
 {
     public static void main( String[] args ) throws IOException {
-        final File UVL_FILE = new File("/home/stefan/stefan-vill-master/eval/tmp_models/root_8.uvl");
-        final File TARGET_FILE = new File("/home/stefan/test/test.opb");
+        final File UVL_FILE = new File("./test/test.uvl");
+        final File TARGET_FILE = new File("./test.opb");
         String content = new String(Files.readAllBytes(UVL_FILE.toPath()));
         UVLModelFactory uvlModelFactory = new UVLModelFactory();
         FeatureModel featureModel = uvlModelFactory.parse(content);
