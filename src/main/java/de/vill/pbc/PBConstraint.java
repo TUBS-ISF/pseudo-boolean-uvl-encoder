@@ -101,6 +101,7 @@ public class PBConstraint implements Cloneable{
             }
         }
         literalList = literalList.stream().filter(l -> l.name != null).collect(Collectors.toList());
+        //TODO currently there are 4 dicimal places: this can lead to wrong results comapred to a dimacs encoding
         DecimalFormat df = new DecimalFormat("#.####");
         for (Literal l : literalList) {
             if (!l.sign){
@@ -112,6 +113,7 @@ public class PBConstraint implements Cloneable{
         }
         k = Double.parseDouble(df.format(k));
         result.numberConstraints++;
+        //TODO currently there are 4 dicimal places: this can lead to wrong results comapred to a dimacs encoding
         int maxDecimalPlaces = Math.min(getMaxDecimalPlaces(), 4);
         for(Literal l : literalList){
             if(l.factor < 0){
